@@ -19,7 +19,8 @@ class ReverseActor
 {
     public ReverseActor()
     {
-        Receive<string>(message => {
+        Receive<string>(message =>
+        {
             char[] buffer = message.ToCharArray();
             Array.Reverse(buffer);
     
