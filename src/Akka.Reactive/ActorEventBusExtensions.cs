@@ -51,6 +51,14 @@ namespace Akka.Reactive
 						// AF: Or, at the very least, have a root actor that creates child actors as subscribers and manages their lifetimes.
 						IActorRef subscriber = system.ActorOf(
 							Props.Create<EventSubscriberActor<TEventMessage>>(observer)
+								.WithSupervisorStrategy(
+									new OneForOneStrategy(error => // Slightly hacky way of notifying observer of any errors encountered by the subscriber actor.
+									{
+										observer.OnError(error);
+										
+										return Directive.Stop;
+									})
+								)
 						);
 
 						eventBus.Subscribe(subscriber, subscriptionClassifier);
