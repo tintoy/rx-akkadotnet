@@ -18,6 +18,23 @@ namespace Akka.Reactive
 		/// <param name="actorRef">
 		///		A reference to the actor that observed messages will be forwarded to.
 		/// </param>
+		/// <returns>
+		///		The new observer.
+		/// </returns>
+		public static IObserver<TMessage> ToObserver<TMessage>(this IActorRef actorRef)
+		{
+			return actorRef.ToObserver(stopOnCompletion: false);
+		}
+		
+		/// <summary>
+		///		Create an <see cref="IObserver{T}">observer</see> that can be used to send messages to the specified actor, optionally stopping it when <see cref="IObserver{T}.OnCompleted"/> is called.
+		/// </summary>
+		/// <typeparam name="TMessage">
+		///		The base message type that the observer accepts.
+		/// </typeparam>
+		/// <param name="actorRef">
+		///		A reference to the actor that observed messages will be forwarded to.
+		/// </param>
 		/// <param name="stopOnCompletion">
 		///		Tell the actor to stop (by sending it a <see cref="PoisonPill"/> message) when <see cref="IObserver{T}.OnCompleted"/> is called?
 		/// </param>
