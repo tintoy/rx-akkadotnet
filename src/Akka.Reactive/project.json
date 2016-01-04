@@ -1,0 +1,19 @@
+﻿{
+    "version": "0.1.0-*",
+    "description": "Rx integration for Akka.NET",
+    "authors": [ "tintoy" ],
+    "tags": [ "rx", "reactive", "akka" ],
+    "projectUrl": "https://github.com/tintoy/rx-akkadotnet",
+    "licenseUrl": "https://raw.githubusercontent.com/tintoy/rx-akkadotnet/master/LICENSE",
+    "frameworks": {
+        "net451": {
+            "dependencies": {
+                "Akka": "1.0.5",
+                "Newtonsoft.Json": "7.0.1",
+                "Rx-Interfaces": "2.2.5",
+                "Rx-Core": "2.2.5",
+                "Rx-Linq": "2.2.5"
+            }
+        }
+    }
+}
