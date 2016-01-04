@@ -9,7 +9,7 @@ namespace Akka.Reactive
 	///		Rx-related extension methods for Akka's <see cref="ActorEventBus{TEvent,TClassifier}"/>.
 	/// </summary>
 	/// <remarks>
-	///		AF: This is a work-in-progress. Consider refactoring some of the supporting infrastructure as an actor system extension (well-known end point for tracking actor lifetime and calling OnCompleted / OnError as appropriate.
+	///		AF: This is a work-in-progress. I'm in the progress of refactoring some of the supporting infrastructure as an actor system extension (well-known end point for tracking actor lifetime and calling OnCompleted / OnError as appropriate).
 	/// </remarks>
 	public static class ActorEventBusExtensions
     {
@@ -49,6 +49,9 @@ namespace Akka.Reactive
 					{
 						// AF: Might be better to have a single EventBus subscriber that then acts as a subject to which multiple Rx observers can be subscribed.
 						// AF: Or, at the very least, have a root actor that creates child actors as subscribers and manages their lifetimes.
+
+						// For example, IActorRef subscriberActor = system.Reactive().CreateSubscriberActor(observer);
+
 						IActorRef subscriber = system.ActorOf(
 							Props.Create<EventSubscriberActor<TEventMessage>>(observer)
 								.WithSupervisorStrategy(

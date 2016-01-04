@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Akka.Reactive")]
-[assembly: AssemblyDescription("Rx integration for Akka.NET")]
+[assembly: AssemblyTitle("Akka.Reactive.Tests")]
+[assembly: AssemblyDescription("Test suites for Akka.NET Rx integration")]
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
 #else
@@ -13,7 +12,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Akka.Reactive")]
 [assembly: AssemblyCopyright("Copyright © Adam Friedman 2016")]
 
-[assembly: ComVisible(false)]
-[assembly: Guid("b32d6d79-162b-4089-a0f1-0556d2c5a100")]
-
-[assembly: InternalsVisibleTo("Akka.Reactive.Tests")]
+[assembly: Guid("41817054-1718-4546-9d25-0ff16ef39a2d")]

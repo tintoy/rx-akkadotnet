@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Akka.Reactive", "Akka.Reactive\Akka.Reactive.xproj", "{B32D6D79-162B-4089-A0F1-0556D2C5A100}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Akka.Reactive.Tests", "Akka.Reactive.Tests\Akka.Reactive.Tests.xproj", "{41817054-1718-4546-9D25-0FF16EF39A2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{B32D6D79-162B-4089-A0F1-0556D2C5A100}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B32D6D79-162B-4089-A0F1-0556D2C5A100}.Release|x64.ActiveCfg = Release|Any CPU
 		{B32D6D79-162B-4089-A0F1-0556D2C5A100}.Release|x64.Build.0 = Release|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Debug|x64.Build.0 = Debug|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{41817054-1718-4546-9D25-0FF16EF39A2D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

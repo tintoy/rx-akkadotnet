@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-alpha1",
+  "description": "Test suites for Akka.Reactive",
+  "authors": [ "tintoy" ],
+  "tags": [ "akka", "reactive", "rx", "tests" ],
+  "projectUrl": "https://github.com/tintoy/rx-akkadotnet",
+    "licenseUrl": "https://raw.githubusercontent.com/tintoy/rx-akkadotnet/master/LICENSE",
+    "frameworks": {
+        "net451": {
+            "dependencies": {
+                "Akka": "1.0.5",
+                "Akka.TestKit": "1.0.5",
+                "Akka.TestKit.Xunit2": "1.0.5",
+                "Newtonsoft.Json": "7.0.1",
+                "Rx-Main": "2.2.5",
+                "xunit": "2.1.0"
+            }
+        }
+    },
+    "dependencies": {
+        "Akka.Reactive": "0.1.0-alpha1"
+    }
+}
