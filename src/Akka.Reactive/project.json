@@ -8,15 +8,17 @@
     "frameworks": {
         "dnx451": {
             "dependencies": {
-                "Akka": "1.0.5",
-                "Newtonsoft.Json": "7.0.1",
-                "Rx-Interfaces": "2.2.5",
-                "Rx-Core": "2.2.5",
-                "Rx-Linq": "2.2.5"
+                "Serilog": "1.5.14"
             }
         }
     },
     "dependencies": {
-        "JetBrains.Annotations": "10.0.0"
+        "Akka": "1.0.5",
+        "JetBrains.Annotations": "10.0.0",
+        "Newtonsoft.Json": "7.0.1",
+        "Rx-Interfaces": "2.2.5",
+        "Rx-Core": "2.2.5",
+        "Rx-Linq": "2.2.5",
+        "System.Runtime": "1.0.0-*"
     }
 }

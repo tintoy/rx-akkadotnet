@@ -15,6 +15,7 @@
         "Akka.TestKit.Xunit2": "1.0.5",
         "Newtonsoft.Json": "7.0.1",
         "Rx-Main": "2.2.5",
+        "Serilog": "1.5.14",
         "System.Runtime": "1.0.0-*",
         "xunit": "2.1.0",
         "xunit.runner.dnx": "2.1.0-rc1-build204"

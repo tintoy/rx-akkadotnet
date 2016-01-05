@@ -66,6 +66,21 @@
         "runtime": {
           "lib/net45/System.Reactive.Linq.dll": {}
         }
+      },
+      "Serilog/1.5.14": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        }
+      },
+      "System.Runtime/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
@@ -132,6 +147,21 @@
         "runtime": {
           "lib/net45/System.Reactive.Linq.dll": {}
         }
+      },
+      "Serilog/1.5.14": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        }
+      },
+      "System.Runtime/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
@@ -198,10 +228,29 @@
         "runtime": {
           "lib/net45/System.Reactive.Linq.dll": {}
         }
+      },
+      "Serilog/1.5.14": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Serilog.dll": {},
+          "lib/net45/Serilog.FullNetFx.dll": {}
+        }
+      },
+      "System.Runtime/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       }
     }
   },
   "libraries": {
+    "System.Runtime/1.0.0": {
+      "type": "project",
+      "path": "../wrap/System.Runtime/project.json"
+    },
     "Akka/1.0.5": {
       "type": "package",
       "sha512": "FeUSInuv010XPuaUmZe9uEPspGhjVudLtH2MH7+kY9v54q9Hn+rGSJCD6osFD81YArfSG+l/ocOVDtvJ7S9k0A==",
@@ -337,18 +386,44 @@
         "Rx-Linq.2.2.5.nupkg.sha512",
         "Rx-Linq.nuspec"
       ]
+    },
+    "Serilog/1.5.14": {
+      "type": "package",
+      "sha512": "i5C+/F27bliSk/Kbzh0vRElU76w+EjnoIe0WnH3olbaaoXsm3Nf5bb7UKxGJTeXJjaQ//b92+wAsdJd/8FQjGg==",
+      "files": [
+        "lib/net40/Serilog.dll",
+        "lib/net40/Serilog.FullNetFx.dll",
+        "lib/net40/Serilog.FullNetFx.pdb",
+        "lib/net40/Serilog.FullNetFx.XML",
+        "lib/net40/Serilog.pdb",
+        "lib/net40/Serilog.XML",
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.FullNetFx.dll",
+        "lib/net45/Serilog.FullNetFx.pdb",
+        "lib/net45/Serilog.FullNetFx.XML",
+        "lib/net45/Serilog.pdb",
+        "lib/net45/Serilog.XML",
+        "lib/portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10/Serilog.dll",
+        "lib/portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10/Serilog.pdb",
+        "lib/portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10/Serilog.XML",
+        "Serilog.1.5.14.nupkg",
+        "Serilog.1.5.14.nupkg.sha512",
+        "Serilog.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "JetBrains.Annotations >= 10.0.0"
-    ],
-    "DNX,Version=v4.5.1": [
       "Akka >= 1.0.5",
+      "JetBrains.Annotations >= 10.0.0",
       "Newtonsoft.Json >= 7.0.1",
       "Rx-Interfaces >= 2.2.5",
       "Rx-Core >= 2.2.5",
-      "Rx-Linq >= 2.2.5"
+      "Rx-Linq >= 2.2.5",
+      "System.Runtime >= 1.0.0-*"
+    ],
+    "DNX,Version=v4.5.1": [
+      "Serilog >= 1.5.14"
     ]
   }
 }

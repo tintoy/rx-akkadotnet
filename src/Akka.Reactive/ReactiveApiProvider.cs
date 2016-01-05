@@ -42,7 +42,7 @@ namespace Akka.Reactive
 				name: ReactiveManager.ActorName
 			);
 
-			return new ReactiveApi(manager);
+			return new ReactiveApi(system, manager);
 		}
 	}
 }
