@@ -6,7 +6,7 @@ namespace Akka.Reactive
 	/// <summary>
 	///		The Rx-integration extension for Akka actor systems.
 	/// </summary>
-    sealed class ReactiveExtension
+    sealed class ReactiveApi
 		: IExtension
     {
 		/// <summary>
@@ -15,7 +15,7 @@ namespace Akka.Reactive
 		/// <param name="manager">
 		///		A reference to the root Rx-integration management actor.
 		/// </param>
-		public ReactiveExtension(IActorRef manager)
+		public ReactiveApi(IActorRef manager)
 		{
 			if (manager == null)
 				throw new ArgumentNullException(nameof(manager));

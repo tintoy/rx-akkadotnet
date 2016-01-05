@@ -4,6 +4,8 @@ using System.Reactive;
 
 namespace Akka.Reactive
 {
+	using Messages;
+
 	/// <summary>
 	///		Extension methods for <see cref="IActorRef"/>.
 	/// </summary>
@@ -23,7 +25,7 @@ namespace Akka.Reactive
 		/// </returns>
 		public static IObserver<TMessage> ToObserver<TMessage>(this IActorRef actorRef)
 		{
-			return actorRef.ToObserver(stopOnCompletion: false);
+			return actorRef.ToObserver<TMessage>(stopOnCompletion: false);
 		}
 		
 		/// <summary>
@@ -48,9 +50,13 @@ namespace Akka.Reactive
 
 			return Observer.Create<TMessage>(
 				onNext: message => actorRef.Tell(message),
-				onCompleted: () => actorRef.Tell(PoisonPill.Instance),
+				onCompleted: () =>
+				{
+					if (stopOnCompletion)
+						actorRef.Tell(PoisonPill.Instance);
+				},
 				onError: error => actorRef.Tell(
-					new ReactiveSubscriptionError(error)
+					new ReactiveSequenceError(error)
 				)
 			);
 		}

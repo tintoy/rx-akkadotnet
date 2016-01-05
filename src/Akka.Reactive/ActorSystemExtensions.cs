@@ -17,12 +17,12 @@ namespace Akka.Reactive
 		/// <returns>
 		///		The Rx integration API.
 		/// </returns>
-		public static ReactiveExtension Reactive(this ActorSystem system)
+		public static ReactiveApi Reactive(this ActorSystem system)
 		{
 			if (system == null)
 				throw new ArgumentNullException(nameof(system));
 
-			return ReactiveExtensionProvider.Instance.Apply(system);
+			return ReactiveApiProvider.Instance.Apply(system);
 		}
     }
 }

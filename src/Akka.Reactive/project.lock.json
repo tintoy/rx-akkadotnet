@@ -15,6 +15,15 @@
           "lib/net45/Akka.dll": {}
         }
       },
+      "JetBrains.Annotations/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/JetBrains.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/net20/JetBrains.Annotations.dll": {}
+        }
+      },
       "Newtonsoft.Json/7.0.1": {
         "type": "package",
         "compile": {
@@ -70,6 +79,15 @@
         },
         "runtime": {
           "lib/net45/Akka.dll": {}
+        }
+      },
+      "JetBrains.Annotations/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/JetBrains.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/net20/JetBrains.Annotations.dll": {}
         }
       },
       "Newtonsoft.Json/7.0.1": {
@@ -129,6 +147,15 @@
           "lib/net45/Akka.dll": {}
         }
       },
+      "JetBrains.Annotations/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/JetBrains.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/net20/JetBrains.Annotations.dll": {}
+        }
+      },
       "Newtonsoft.Json/7.0.1": {
         "type": "package",
         "compile": {
@@ -185,6 +212,21 @@
         "lib/net45/Akka.dll",
         "lib/net45/Akka.ExternalAnnotations.xml",
         "lib/net45/Akka.xml"
+      ]
+    },
+    "JetBrains.Annotations/10.0.0": {
+      "type": "package",
+      "sha512": "vyadsDFnDDbR2NK3P++l9AA5ogM+cWlj8kQl8NV9m+LZyEYxjQndZZL/noqb5g8pYpCNellecxtVFdUZ979UWg==",
+      "files": [
+        "JetBrains.Annotations.10.0.0.nupkg",
+        "JetBrains.Annotations.10.0.0.nupkg.sha512",
+        "JetBrains.Annotations.nuspec",
+        "lib/net20/JetBrains.Annotations.dll",
+        "lib/net20/JetBrains.Annotations.xml",
+        "lib/portable-net4+sl4+wp7+netcore45/JetBrains.Annotations.PCL1.dll",
+        "lib/portable-net4+sl4+wp7+netcore45/JetBrains.Annotations.PCL1.xml",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.xml"
       ]
     },
     "Newtonsoft.Json/7.0.1": {
@@ -298,7 +340,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "": [],
+    "": [
+      "JetBrains.Annotations >= 10.0.0"
+    ],
     ".NETFramework,Version=v4.5.1": [
       "Akka >= 1.0.5",
       "Newtonsoft.Json >= 7.0.1",

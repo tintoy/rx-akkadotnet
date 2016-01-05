@@ -3,21 +3,23 @@ using System;
 
 namespace Akka.Reactive
 {
+	using Actors;
+
 	/// <summary>
 	///		Extension provider for Rx integration.
 	/// </summary>
-	class ReactiveExtensionProvider :
-		ExtensionIdProvider<ReactiveExtension>
+	class ReactiveApiProvider :
+		ExtensionIdProvider<ReactiveApi>
 	{
 		/// <summary>
 		///		The singleton instance of the Rx-integration extension provider.
 		/// </summary>
-		public static readonly ReactiveExtensionProvider Instance = new ReactiveExtensionProvider();
+		public static readonly ReactiveApiProvider Instance = new ReactiveApiProvider();
 
 		/// <summary>
 		///		Create a new Rx-integration extension provider.
 		/// </summary>
-		ReactiveExtensionProvider()
+		ReactiveApiProvider()
 		{
 		}
 
@@ -30,7 +32,7 @@ namespace Akka.Reactive
 		/// <returns>
 		///		The extension.
 		/// </returns>
-		public override ReactiveExtension CreateExtension(ExtendedActorSystem system)
+		public override ReactiveApi CreateExtension(ExtendedActorSystem system)
 		{
 			if (system == null)
 				throw new ArgumentNullException(nameof(system));
@@ -40,7 +42,7 @@ namespace Akka.Reactive
 				name: ReactiveManager.ActorName
 			);
 
-			return new ReactiveExtension(manager);
+			return new ReactiveApi(manager);
 		}
 	}
 }

@@ -5,6 +5,8 @@ using System.Reactive.Linq;
 
 namespace Akka.Reactive
 {
+	using Messages;
+
 	/// <summary>
 	///		Rx-related extension methods for Akka's <see cref="ActorEventBus{TEvent,TClassifier}"/>.
 	/// </summary>
@@ -45,71 +47,18 @@ namespace Akka.Reactive
 			// When an observer subscribes, create an actor to represent them and subscribe it to the bus.
 			return
 				Observable.Create<TEventMessage>(
-					subscribe: observer => () =>
+					async observer =>
 					{
-						// AF: Might be better to have a single EventBus subscriber that then acts as a subject to which multiple Rx observers can be subscribed.
-						// AF: Or, at the very least, have a root actor that creates child actors as subscribers and manages their lifetimes.
+						// TODO: Push this down to the subscriber manager and have it unsubscribe when the subscribed actor stops (looks like this behaviour - ManagedActorClassification - is missing from CLR Akka).
 
-						// For example, IActorRef subscriberActor = system.Reactive().CreateSubscriberActor(observer);
-
-						IActorRef subscriber = system.ActorOf(
-							Props.Create<EventSubscriberActor<TEventMessage>>(observer)
-								.WithSupervisorStrategy(
-									new OneForOneStrategy(error => // Slightly hacky way of notifying observer of any errors encountered by the subscriber actor.
-									{
-										observer.OnError(error);
-										
-										return Directive.Stop;
-									})
-								)
+						SubscriberCreated subscriberCreated = await system.Reactive().Manager.Ask<SubscriberCreated>( // TODO: Make this an extension method for ReactiveExtension.
+							new CreateSubscriber<TEventMessage>(observer),
+							timeout: TimeSpan.FromSeconds(30) // TODO: Make this configurable.
 						);
 
-						eventBus.Subscribe(subscriber, subscriptionClassifier);
+						eventBus.Subscribe(subscriberCreated.Subscriber, subscriptionClassifier);
 					}
 				);
-		}
-
-		/// <summary>
-		///		Actor that forwards received events to an <see cref="IObserver{T}"/>.
-		/// </summary>
-		/// <typeparam name="TEventMessage">
-		///		The base message type used to represent events.
-		/// </typeparam>
-		class EventSubscriberActor<TEventMessage>
-			: ReceiveActor
-		{
-			/// <summary>
-			///		The <see cref="IObserver{T}"/> to which events are forwarded.
-			/// </summary>
-			readonly IObserver<TEventMessage> _eventObserver;
-
-			/// <summary>
-			///		Create a new event-subscriber actor.
-			/// </summary>
-			/// <param name="eventObserver">
-			///		The <see cref="IObserver{T}"/> to which events are forwarded.
-			/// </param>
-			public EventSubscriberActor(IObserver<TEventMessage> eventObserver)
-			{
-				if (eventObserver == null)
-					throw new ArgumentNullException(nameof(eventObserver));
-
-				_eventObserver = eventObserver;
-
-				Receive<TEventMessage>(
-					eventMessage => _eventObserver.OnNext(eventMessage)
-				);
-			}
-
-			/// <summary>
-			///		Called when the actor is stopped.
-			/// </summary>
-			protected override void PostStop()
-			{
-				_eventObserver.OnCompleted();
-
-				base.PostStop();
-			}
 		}
     }
 }
