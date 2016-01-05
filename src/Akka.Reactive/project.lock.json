@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    "DNX,Version=v4.5.1": {
       "Akka/1.0.5": {
         "type": "package",
         "dependencies": {
@@ -68,7 +68,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x86": {
+    "DNX,Version=v4.5.1/win7-x86": {
       "Akka/1.0.5": {
         "type": "package",
         "dependencies": {
@@ -134,7 +134,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x64": {
+    "DNX,Version=v4.5.1/win7-x64": {
       "Akka/1.0.5": {
         "type": "package",
         "dependencies": {
@@ -343,7 +343,7 @@
     "": [
       "JetBrains.Annotations >= 10.0.0"
     ],
-    ".NETFramework,Version=v4.5.1": [
+    "DNX,Version=v4.5.1": [
       "Akka >= 1.0.5",
       "Newtonsoft.Json >= 7.0.1",
       "Rx-Interfaces >= 2.2.5",

@@ -6,7 +6,7 @@ namespace Akka.Reactive
 	/// <summary>
 	///		Extension methods for <see cref="ActorSystem"/>.
 	/// </summary>
-    static class ActorSystemExtensions
+    public static class ActorSystemExtensions
     {
 		/// <summary>
 		///		Get the Rx integration API for the actor system.

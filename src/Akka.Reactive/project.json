@@ -6,7 +6,7 @@
     "projectUrl": "https://github.com/tintoy/rx-akkadotnet",
     "licenseUrl": "https://raw.githubusercontent.com/tintoy/rx-akkadotnet/master/LICENSE",
     "frameworks": {
-        "net451": {
+        "dnx451": {
             "dependencies": {
                 "Akka": "1.0.5",
                 "Newtonsoft.Json": "7.0.1",
