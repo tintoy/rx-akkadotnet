@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "Akka": "1.0.5",
+        "Akka.Logger.Serilog": "1.0.5",
         "JetBrains.Annotations": "10.0.0",
         "Newtonsoft.Json": "7.0.1",
         "Rx-Interfaces": "2.2.5",

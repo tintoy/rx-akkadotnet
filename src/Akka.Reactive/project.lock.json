@@ -15,6 +15,19 @@
           "lib/net45/Akka.dll": {}
         }
       },
+      "Akka.Logger.Serilog/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Akka": "1.0.5",
+          "Serilog": "1.3.43"
+        },
+        "compile": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
+        }
+      },
       "JetBrains.Annotations/10.0.0": {
         "type": "package",
         "compile": {
@@ -96,6 +109,19 @@
           "lib/net45/Akka.dll": {}
         }
       },
+      "Akka.Logger.Serilog/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Akka": "1.0.5",
+          "Serilog": "1.3.43"
+        },
+        "compile": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
+        }
+      },
       "JetBrains.Annotations/10.0.0": {
         "type": "package",
         "compile": {
@@ -175,6 +201,19 @@
         },
         "runtime": {
           "lib/net45/Akka.dll": {}
+        }
+      },
+      "Akka.Logger.Serilog/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Akka": "1.0.5",
+          "Serilog": "1.3.43"
+        },
+        "compile": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Akka.Logger.Serilog.dll": {}
         }
       },
       "JetBrains.Annotations/10.0.0": {
@@ -261,6 +300,17 @@
         "lib/net45/Akka.dll",
         "lib/net45/Akka.ExternalAnnotations.xml",
         "lib/net45/Akka.xml"
+      ]
+    },
+    "Akka.Logger.Serilog/1.0.5": {
+      "type": "package",
+      "sha512": "New25jTWp5UnLDYBpZXTFKwEB03Z78I1dfW6ZGBwZtKhzAvObWJewWkFlTPNZ2lETm7968xTdwhrH/6bJ0bK/g==",
+      "files": [
+        "Akka.Logger.Serilog.1.0.5.nupkg",
+        "Akka.Logger.Serilog.1.0.5.nupkg.sha512",
+        "Akka.Logger.Serilog.nuspec",
+        "lib/net45/Akka.Logger.Serilog.dll",
+        "lib/net45/Akka.Logger.Serilog.xml"
       ]
     },
     "JetBrains.Annotations/10.0.0": {
@@ -415,6 +465,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Akka >= 1.0.5",
+      "Akka.Logger.Serilog >= 1.0.5",
       "JetBrains.Annotations >= 10.0.0",
       "Newtonsoft.Json >= 7.0.1",
       "Rx-Interfaces >= 2.2.5",
