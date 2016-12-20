@@ -66,8 +66,8 @@ reverseSubject.OnCompleted();
 Which should produce output:
 
 ```
-dlroW
 olleH
+dlroW
 ReverseActor stopped.
 Done.
 ```
