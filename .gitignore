@@ -7,6 +7,9 @@
 *.userosscache
 *.sln.docstates
 
+# Lock files
+project.lock.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -197,3 +200,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# Mac
+.DS_Store

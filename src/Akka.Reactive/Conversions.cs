@@ -6,7 +6,7 @@ using System.Reactive.Linq;
 
 namespace Akka.Reactive
 {
-	using Messages;
+    using Messages;
 
 	/// <summary>
 	///		Extension methods for converting between Akka types (e.g. <see cref="IActorRef"/>) and Rx types (e.g. <see cref="IObserver{T}"/> / <see cref="IObservable{T}"/>).

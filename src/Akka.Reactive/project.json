@@ -19,7 +19,6 @@
   "dependencies": {
     "Akka": "1.2.0-alpha18",
     "Newtonsoft.Json": "9.0.1",
-    "Serilog": "2.3.0",
     "System.Reactive": "3.1.0"
   },
   "frameworks": {

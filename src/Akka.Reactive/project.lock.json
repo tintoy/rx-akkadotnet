@@ -332,28 +332,6 @@
           }
         }
       },
-      "Serilog/2.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.3/Serilog.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Serilog.dll": {}
-        }
-      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1681,7 +1659,7 @@
       ]
     },
     "Microsoft.CSharp/4.0.1": {
-      "sha512": "kCZvPo+cXMeF3zI+Ajn1sKFCFW1EUIp08emX7XdEbIN4Mt45KtYc9NhKUoHKJD3dLM5e6EgmaozYr6bZX8ubBw==",
+      "sha512": "CbdAfdJ8RMlvc5q+2m9gmgWkPZ/Mc5V7Q01J5CaGPS5W2D9PeBxP5gdD//iiAdHcTtWPij7iZjl20B/rxqRkQA==",
       "type": "package",
       "path": "Microsoft.CSharp/4.0.1",
       "files": [
@@ -2026,23 +2004,6 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "Serilog/2.3.0": {
-      "sha512": "JJMEqTUGe/bA4OEMefGd8W6si9oStSa3CF47dIHzkRKJHqFWFOW8D2aZTOW6VIgNLY2hzruQXhvp2tX0NVkgsw==",
-      "type": "package",
-      "path": "Serilog/2.3.0",
-      "files": [
-        "Serilog.2.3.0.nupkg.sha512",
-        "Serilog.nuspec",
-        "lib/net45/Serilog.dll",
-        "lib/net45/Serilog.xml",
-        "lib/net46/Serilog.dll",
-        "lib/net46/Serilog.xml",
-        "lib/netstandard1.0/Serilog.dll",
-        "lib/netstandard1.0/Serilog.xml",
-        "lib/netstandard1.3/Serilog.dll",
-        "lib/netstandard1.3/Serilog.xml"
-      ]
-    },
     "System.AppContext/4.3.0": {
       "sha512": "fKC+rmaLfeIzUhagxY17Q9siv/sPrjjKcfNg1Ic8IlQkZLipo8ljcaZQu4VtI4Jqbzjc2VTjzGLF6WmsRXAEgA==",
       "type": "package",
@@ -2257,7 +2218,7 @@
       ]
     },
     "System.ComponentModel/4.0.1": {
-      "sha512": "GSuk/Qm+JITzL9VLsH8zngw+xdVo1MrnacwCo5uOMv4Tfxc1c5B+ZCisYZg7OJVu39GAxGea4FTK351KsML58w==",
+      "sha512": "uNUrM5eG4/8eIyF91vEwwiVBj4d2026QLjmtM9Rhyr4ARRocZW9bcSu+t9chAENtlpKvj05Dq4fdox/R40X6Wg==",
       "type": "package",
       "path": "System.ComponentModel/4.0.1",
       "files": [
@@ -2675,7 +2636,7 @@
       ]
     },
     "System.Dynamic.Runtime/4.0.11": {
-      "sha512": "48jX9L6YkUgmODP3eGK3gXtlRLjhD4a/qXMVZgQ+sWhKIu4V1Eih6jcnB+RB7YCm/k5Vp+iLCFRQj7i/ZfaJgg==",
+      "sha512": "rCE7LKC/CjNZ7sS7AUFl7/baBOtwQ5vu4iF8xhRW5DK3hdp52bzd9RIpYHkAXQv+KzkUlbxrCazfmeTIg6Moow==",
       "type": "package",
       "path": "System.Dynamic.Runtime/4.0.11",
       "files": [
@@ -5609,7 +5570,6 @@
     "": [
       "Akka >= 1.2.0-alpha18",
       "Newtonsoft.Json >= 9.0.1",
-      "Serilog >= 2.3.0",
       "System.Reactive >= 3.1.0"
     ],
     ".NETStandard,Version=v1.6": [

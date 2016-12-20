@@ -20,7 +20,12 @@ namespace Akka.Reactive.Actors
 		/// <summary>
 		///		The open generic type for <see cref="TypedSubscriberManager{TMessage}"/>.
 		/// </summary>
-		static readonly Type SubscriberManagerTypeDef = typeof(SubjectManager<>);
+		static readonly Type SubscriberManagerTypeDef = typeof(TypedSubscriberManager<>);
+
+		/// <summary>
+		///		The open generic type for <see cref="SubjectManager{TMessage}"/>.
+		/// </summary>
+		static readonly Type SubjectManagerTypeDef = typeof(SubjectManager<>);
 
 		/// <summary>
 		///		Actors that manage subscriptions for a given base message type, keyed by message type.
@@ -38,6 +43,12 @@ namespace Akka.Reactive.Actors
 		public ReactiveManager()
 		{
 			Receive<CreateSubscriber>(createSubscriber => CreateSubscriberActor(createSubscriber));
+			Receive<CreateSubject>(createSubjectManager =>
+			{
+				IActorRef subjectManager = CreateSubjectManager(createSubjectManager);
+
+				Sender.Tell(new SubjectManagerRef(subjectManager));
+			});
 			Receive<Terminated>(terminated =>
 			{
 				Type baseMessageType;
@@ -78,6 +89,25 @@ namespace Akka.Reactive.Actors
 
 			// Forward the message to the typed subscriber manager; they'll know what to do with it.
 			subscriberManager.Forward(createSubscriber);
+		}
+
+		/// <summary>
+        /// 	Create a <see cref="SubjectManager{TMessage}"/>.
+        /// </summary>
+        /// <param name="target">
+		///		The target actor represented by the subject.
+		/// </param>
+        /// <param name="baseMessageType"></param>
+        /// <returns>
+		///		An <see cref="IActorRef" /> representing the subject manager.
+		/// </returns>
+		IActorRef CreateSubjectManager(CreateSubject createSubjectManager)
+		{
+			Type subjectManagerType = SubjectManagerTypeDef.MakeGenericType(createSubjectManager.BaseMessageType);
+			
+			return Context.ActorOf(
+				 Props.Create(subjectManagerType, createSubjectManager.Target)
+			);
 		}
 		
 		/// <summary>

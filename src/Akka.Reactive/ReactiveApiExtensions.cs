@@ -1,10 +1,11 @@
 ﻿using Akka.Actor;
 using System;
+using System.Reactive.Subjects;
 using System.Threading.Tasks;
 
 namespace Akka.Reactive
 {
-	using Messages;
+    using Messages;
 
 	/// <summary>
 	///		Extension methods for the <see cref="ReactiveApi">reactive API</see>.
@@ -37,16 +38,47 @@ namespace Akka.Reactive
 			if (observer == null)
 				throw new ArgumentNullException(nameof(observer));
 
-			api.Logger.Verbose("Creating subscriber actor for messages of type {MessageType}...", typeof(TMessage).FullName);
-
 			SubscriberCreated subscriberCreated = await api.Manager.Ask<SubscriberCreated>(
 				new CreateSubscriber<TMessage>(observer),
 				timeout ?? TimeSpan.FromSeconds(30)
 			);
 
-			api.Logger.Verbose("Created subscriber actor {ActorPath} for messages of type {MessageType}...", subscriberCreated.Subscriber.Path.ToStringWithoutAddress(), typeof(TMessage).FullName);
-
 			return subscriberCreated.Subscriber;
+		}
+
+		/// <summary>
+        /// 	Create a <see cref="Subject{T}"/> to represent the specified target actor.
+        /// </summary>
+		/// <typeparam name="T">
+		///		The type of element handled by the subject.
+		/// </typeparam>
+        /// <param name="api">
+		///		The reactive API.
+		/// </param>
+        /// <param name="target">
+		///		The actor to be represented by the subject.
+		/// </param>
+        /// <returns>
+		///		The <see cref="Subject{T}"/>.
+		/// </returns>
+		public static async Task<ISubject<T>> CreateSubjectAsync<T>(this ReactiveApi api, IActorRef target)
+		{
+			if (api == null)
+				throw new ArgumentNullException(nameof(api));
+
+			if (target == null)
+				throw new ArgumentNullException(nameof(target));
+
+			var subjectManager = await
+				api.Manager.Ask<SubjectManagerRef>(
+					new CreateSubject(target, typeof(T))
+				);
+			var subjectInterfaces = await
+				subjectManager.ManagerRef.Ask<SubjectInterfaces<T>>(
+					GetSubjectInterfaces.Instance
+				);
+
+			return Subject.Create<T>(subjectInterfaces.Observer, subjectInterfaces.Observable);
 		}
 	}
 }

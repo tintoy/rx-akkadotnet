@@ -50,7 +50,7 @@ IActorRef reverseActor = system.ActorOf(
     Props.Create<ReverseActor>()
 );
 
-ISubject<string, string> reverseSubject = reverseActor.ToSubject<string, string>();
+ISubject<string> reverseSubject = await system.Reactive().CreateSubjectAsync<string>(reverseActor);
 
 // Log to console
 reverseSubject.Subscribe(

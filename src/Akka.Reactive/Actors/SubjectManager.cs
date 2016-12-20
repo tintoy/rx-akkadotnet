@@ -2,6 +2,7 @@
 using System;
 using System.Reactive;
 using System.Reactive.Subjects;
+using Akka.Reactive.Messages;
 
 namespace Akka.Reactive.Actors
 {
@@ -27,21 +28,37 @@ namespace Akka.Reactive.Actors
 		/// <summary>
 		///		Create a new <see cref="ISubject{TSource,TResult}"/> manager.
 		/// </summary>
-		public SubjectManager()
+	  	/// <param name="target">
+		///		The target actor represented by the subject.
+		/// </param>
+		public SubjectManager(IActorRef target)
 		{
+			if (target == null)
+				throw new ArgumentNullException(nameof(target));
+
 			// Route messages through this actor.
 			IActorRef self = Context.Self;
+			// TODO: Consider using target.ToSubject().
 			_input = Observer.Create<TMessage>(
-				onNext: message => self.Tell(message),
-				onError: error => self.Tell(error),
-				onCompleted: () => Context.Stop(self)
+				onNext: message => target.Tell(message),
+				onError: error => new ReactiveSequenceError(error),
+				onCompleted: () =>
+				{
+					// Sequence complete; stop target.
+					target.Tell(PoisonPill.Instance);
+
+					Context.Stop(self);
+				}
 			);
 
 			Receive<TMessage>(message => _subject.OnNext(message));
 			Receive<Exception>(error => _subject.OnError(error));
-			Receive<GetSubjectInterfaces>(
-				getSubjectInterfaces => new SubjectInterfaces(observer: _input, observable: _subject)
-			);
+			Receive<GetSubjectInterfaces>(getSubjectInterfaces =>
+			{
+				Sender.Tell(new SubjectInterfaces<TMessage>(
+					observer: _input, observable: _subject
+				));
+			});
 		}
 
 		/// <summary>
@@ -56,55 +73,5 @@ namespace Akka.Reactive.Actors
 
 			base.PostStop();
 		}
-
-		#region Messages
-
-		/// <summary>
-		///		Message requesting the subject's observable / observer interfaces.
-		/// </summary>
-		public sealed class GetSubjectInterfaces
-		{
-		}
-
-		/// <summary>
-		///		Message providing the subject's observable / observer interfaces.
-		/// </summary>
-		public sealed class SubjectInterfaces
-		{
-			/// <summary>
-			///		Create a new <see cref="SubjectInterfaces"/> message.
-			/// </summary>
-			/// <param name="observer">
-			///		An <see cref="IObserver{T}"/> representing the subject's observer interface.
-			/// </param>
-			/// <param name="observable">
-			///		An <see cref="IObservable{T}"/> representing the subject's observable interface.
-			/// </param>
-			public SubjectInterfaces(IObserver<TMessage> observer, IObservable<TMessage> observable)
-			{
-				if (observer == null)
-					throw new ArgumentNullException(nameof(observer));
-
-				if (observable == null)
-					throw new ArgumentNullException(nameof(observable));
-
-				Observer = observer;
-				Observable = observable;
-			}
-
-			/// <summary>
-			///		An <see cref="IObserver{T}"/> representing the subject's observer interface.
-			/// </summary>
-			
-			public IObserver<TMessage> Observer { get; }
-
-			/// <summary>
-			///		An <see cref="IObservable{T}"/> representing the subject's observable interface.
-			/// </summary>
-			
-			public IObservable<TMessage> Observable { get; }
-		}
-
-		#endregion // Messages
 	}
 }
