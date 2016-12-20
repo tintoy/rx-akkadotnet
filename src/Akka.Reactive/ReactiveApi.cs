@@ -1,5 +1,4 @@
 ﻿using Akka.Actor;
-using JetBrains.Annotations;
 using Serilog;
 using System;
 
@@ -56,19 +55,19 @@ namespace Akka.Reactive
 		/// <summary>
 		///		The actor system extended by the API.
 		/// </summary>
-		[NotNull]
+		
 		public ActorSystem System	{ get; }
 
 		/// <summary>
 		///		A reference to the root Rx-integration management actor.
 		/// </summary>
-		[NotNull]
+		
 		internal IActorRef Manager	{ get; }
 
 		/// <summary>
 		///		The top-level logger for the reactive API.
 		/// </summary>
-		[NotNull]
+		
 		internal ILogger Logger		{ get; }
 	}
 }

@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 
 namespace Akka.Reactive.Messages
 {
@@ -29,7 +28,7 @@ namespace Akka.Reactive.Messages
 		/// <param name="observer">
 		///		The observer that the subscriber will represent.
 		/// </param>
-		public CreateSubscriber([NotNull] IObserver<TMessage> observer)
+		public CreateSubscriber(IObserver<TMessage> observer)
 		{
 			if (observer == null)
 				throw new ArgumentNullException(nameof(observer));
@@ -48,7 +47,7 @@ namespace Akka.Reactive.Messages
 		/// <summary>
 		///		The observer that the subscriber will represent.
 		/// </summary>
-		[NotNull]
+		
 		public IObserver<TMessage> Observer { get; }
 	}
 }

@@ -13,20 +13,19 @@ namespace Akka.Reactive.Tests
 		/// <summary>
 		///		The default configuration for use in unit tests.
 		/// </summary>
-		public static readonly Config Default = LogToSerilog();
+		public static readonly Config Default = Log();
 
 		/// <summary>
 		///		Configuration for logging to Serilog.
 		/// </summary>
-		public static Config LogToSerilog(LogLevel logLevel = LogLevel.InfoLevel)
+		public static Config Log(LogLevel logLevel = LogLevel.InfoLevel)
 		{
 			return ConfigurationFactory.ParseString(
 				String.Format(@"
 					akka {{
 						loglevel = {0}
-						loggers = [
-							""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog""
-						]
+
+						suppress-json-serializer-warning = on
 					}}
 				",
 				GetLogLevelName(logLevel))

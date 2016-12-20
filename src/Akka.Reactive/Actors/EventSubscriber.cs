@@ -3,7 +3,6 @@ using System;
 
 namespace Akka.Reactive.Actors
 {
-	using Event;
 	using Messages;
 
 	/// <summary>

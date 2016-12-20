@@ -34,7 +34,7 @@ namespace Akka.Reactive.Actors
 			if (eventBus == null)
 				throw new ArgumentNullException(nameof(eventBus));
 
-			Type eventBusType = MakeActorEventBusType<TEvent, TClassifier>();
+      Type eventBusType = MakeActorEventBusType<TEvent, TClassifier>();
 
 			return Actor.Props.Create(eventBusType, eventBus);
 		}

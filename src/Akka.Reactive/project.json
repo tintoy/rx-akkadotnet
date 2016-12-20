@@ -1,25 +1,36 @@
 {
-    "version": "0.1.0-alpha1",
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable"
+  },
+  "packOptions": {
     "description": "Rx integration for Akka.NET",
-    "authors": [ "tintoy" ],
-    "tags": [ "rx", "reactive", "akka" ],
+    "authors": [
+      "tintoy"
+    ],
+    "tags": [
+      "rx",
+      "reactive",
+      "akka"
+    ],
     "projectUrl": "https://github.com/tintoy/rx-akkadotnet",
-    "licenseUrl": "https://raw.githubusercontent.com/tintoy/rx-akkadotnet/master/LICENSE",
-    "frameworks": {
-        "dnx451": {
-            "dependencies": {
-                "Serilog": "1.5.14"
-            }
-        }
-    },
-    "dependencies": {
-        "Akka": "1.0.5",
-        "Akka.Logger.Serilog": "1.0.5",
-        "JetBrains.Annotations": "10.0.0",
-        "Newtonsoft.Json": "7.0.1",
-        "Rx-Interfaces": "2.2.5",
-        "Rx-Core": "2.2.5",
-        "Rx-Linq": "2.2.5",
-        "System.Runtime": "1.0.0-*"
+    "licenseUrl": "https://raw.githubusercontent.com/tintoy/rx-akkadotnet/master/LICENSE"
+  },
+  "dependencies": {
+    "Akka": "1.2.0-alpha18",
+    "Newtonsoft.Json": "9.0.1",
+    "Serilog": "2.3.0",
+    "System.Reactive": "3.1.0"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.1"
+      },
+      "imports": "net45"
     }
+  },
+  "tooling": {
+    "defaultNamespace": "Akka.Reactive"
+  }
 }

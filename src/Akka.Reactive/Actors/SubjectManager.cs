@@ -1,5 +1,4 @@
 ﻿using Akka.Actor;
-using JetBrains.Annotations;
 using System;
 using System.Reactive;
 using System.Reactive.Subjects;
@@ -81,7 +80,7 @@ namespace Akka.Reactive.Actors
 			/// <param name="observable">
 			///		An <see cref="IObservable{T}"/> representing the subject's observable interface.
 			/// </param>
-			public SubjectInterfaces([NotNull] IObserver<TMessage> observer, [NotNull] IObservable<TMessage> observable)
+			public SubjectInterfaces(IObserver<TMessage> observer, IObservable<TMessage> observable)
 			{
 				if (observer == null)
 					throw new ArgumentNullException(nameof(observer));
@@ -96,13 +95,13 @@ namespace Akka.Reactive.Actors
 			/// <summary>
 			///		An <see cref="IObserver{T}"/> representing the subject's observer interface.
 			/// </summary>
-			[NotNull]
+			
 			public IObserver<TMessage> Observer { get; }
 
 			/// <summary>
 			///		An <see cref="IObservable{T}"/> representing the subject's observable interface.
 			/// </summary>
-			[NotNull]
+			
 			public IObservable<TMessage> Observable { get; }
 		}
 
