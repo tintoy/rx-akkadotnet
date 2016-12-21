@@ -16,7 +16,7 @@ namespace Akka.Reactive.Tests
 		public static readonly Config Default = Log();
 
 		/// <summary>
-		///		Configuration for logging to Serilog.
+		///		Configuration with logging.
 		/// </summary>
 		public static Config Log(LogLevel logLevel = LogLevel.InfoLevel)
 		{

@@ -1,5 +1,4 @@
 ﻿using Akka.Actor;
-using Serilog;
 using System;
 
 namespace Akka.Reactive
@@ -20,23 +19,6 @@ namespace Akka.Reactive
 		///		A reference to the root Rx-integration management actor.
 		/// </param>
 		public ReactiveApi(ActorSystem system, IActorRef manager)
-			: this(system, manager, Log.Logger)
-		{
-		}
-
-		/// <summary>
-		///		Create a new Rx-integration actor system extension.
-		/// </summary>
-		/// <param name="system">
-		///		The actor system extended by the API.
-		/// </param>
-		/// <param name="manager">
-		///		A reference to the root Rx-integration management actor.
-		/// </param>
-		/// <param name="logger">
-		///		The top-level logger for the reactive API.
-		/// </param>
-		public ReactiveApi(ActorSystem system, IActorRef manager, ILogger logger)
 		{
 			if (system == null)
 				throw new ArgumentNullException(nameof(system));
@@ -44,12 +26,8 @@ namespace Akka.Reactive
 			if (manager == null)
 				throw new ArgumentNullException(nameof(manager));
 
-			if (logger == null)
-				throw new ArgumentNullException(nameof(logger));
-
 			System = system;
 			Manager = manager;
-			Logger = logger.ForContext("Component", nameof(ReactiveApi));
 		}
 
 		/// <summary>
@@ -63,11 +41,5 @@ namespace Akka.Reactive
 		/// </summary>
 		
 		internal IActorRef Manager	{ get; }
-
-		/// <summary>
-		///		The top-level logger for the reactive API.
-		/// </summary>
-		
-		internal ILogger Logger		{ get; }
 	}
 }
