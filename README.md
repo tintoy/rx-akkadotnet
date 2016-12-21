@@ -4,6 +4,8 @@ Reactive Extensions (Rx) integration for Akka.NET
 This library was originally used to sketch out ideas, but is now being actively developed based on community feedback.
 Contributions or contributors are welcome :)
 
+Note that this targets .NET Core, and so if you want to work with it you'll need to add the [Akka.NET CoreCLR package feed](NuGet.config) to your NuGet.config.
+
 Functionality currently includes:
 * Wrap an `IActorRef` in an `IObserver`
    * Uses the actor's designated scheduler to deliver messages to it
