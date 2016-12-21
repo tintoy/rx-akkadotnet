@@ -41,7 +41,7 @@ namespace Akka.Reactive.Actors
 			// TODO: Consider using target.ToSubject().
 			_input = Observer.Create<TMessage>(
 				onNext: message => target.Tell(message),
-				onError: error => new ReactiveSequenceError(error),
+				onError: error => target.Tell(new ReactiveSequenceError(error)),
 				onCompleted: () =>
 				{
 					// Sequence complete; stop target.
