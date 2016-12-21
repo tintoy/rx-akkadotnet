@@ -8,7 +8,7 @@ namespace Akka.Reactive.Tests
 	/// <summary>
 	///		Akka configurations for test.
 	/// </summary>
-    public static class TestConfigurations
+	public static class TestConfigurations
 	{
 		/// <summary>
 		///		The default configuration for use in unit tests.

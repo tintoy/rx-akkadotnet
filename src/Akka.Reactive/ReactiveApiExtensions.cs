@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Akka.Reactive
 {
-    using Messages;
+	using Messages;
 
 	/// <summary>
 	///		Extension methods for the <see cref="ReactiveApi">reactive API</see>.
 	/// </summary>
-    public static class ReactiveApiExtensions
-    {
+	public static class ReactiveApiExtensions
+	{
 		/// <summary>
 		///		Asynchronously create a subscriber for the specified <see cref="IObserver{T}">observer</see>.
 		/// </summary>
@@ -47,18 +47,18 @@ namespace Akka.Reactive
 		}
 
 		/// <summary>
-        /// 	Create a <see cref="Subject{T}"/> to represent the specified target actor.
-        /// </summary>
+		/// 	Create a <see cref="Subject{T}"/> to represent the specified target actor.
+		/// </summary>
 		/// <typeparam name="T">
 		///		The type of element handled by the subject.
 		/// </typeparam>
-        /// <param name="api">
+		/// <param name="api">
 		///		The reactive API.
 		/// </param>
-        /// <param name="target">
+		/// <param name="target">
 		///		The actor to be represented by the subject.
 		/// </param>
-        /// <returns>
+		/// <returns>
 		///		The <see cref="Subject{T}"/>.
 		/// </returns>
 		public static async Task<ISubject<T>> CreateSubjectAsync<T>(this ReactiveApi api, IActorRef target)

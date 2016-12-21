@@ -11,9 +11,9 @@ namespace Akka.Reactive.Actors
 	/// <typeparam name="TMessage">
 	///		The base message type.
 	/// </typeparam>
-    public class TypedSubscriberManager<TMessage>
+	public class TypedSubscriberManager<TMessage>
 		: ReceiveActor
-    {
+	{
 		/// <summary>
 		///		Create a new <see cref="TypedSubscriberManager{TMessage}"/> actor.
 		/// </summary>

@@ -8,7 +8,7 @@ namespace Akka.Reactive.Tests
 	/// <summary>
 	///		Tests for the Rx integration extension for Akka actor systems.
 	/// </summary>
-    public class ReactiveExtensionTests
+	public class ReactiveExtensionTests
 	{
 		/// <summary>
 		///		Create a new test suite for the Rx integration extension.

@@ -1,7 +1,10 @@
 # rx-akkadotnet
 Reactive Extensions (Rx) integration for Akka.NET
 
-Functionality includes:
+This library was originally used to sketch out ideas, but is now being actively developed based on community feedback.
+Contributions or contributors are welcome :)
+
+Functionality currently includes:
 * Wrap an `IActorRef` in an `IObserver`
    * Uses the actor's designated scheduler to deliver messages to it
    * Calling `IObserver::OnError` will deliver a special messsage to the actor containing the error.
@@ -10,8 +13,9 @@ Functionality includes:
    * Calling `IObserver::OnCompleted` will by default send the actor a `PoisonPill` message (but this will be configurable)
 * Subject actor (and wrapper `ISubject` implementation for communicating with it)
    * Messages sent to `IObserver::OnNext` are sent to the actor to be published via `IObservable::Subscribe`
-   * Currently unsure of the best way to surface errors sent to `IObservable::OnError` (may wind up simply forwarding them to be published via `IObservable::Subscribe`)
+   * Calling `IObserver::OnError` will deliver a special messsage to the target actor containing the error.
    * Subject actor terminates once `IObservable::OnCompleted` is called
+   * Target actor will (optionally?) be sent a `PoisonPill` when `IObservable::OnCompleted` is called
    * Subject's outgoing `OnCompleted` will not be called until the subject actor itself has terminated.
 * Rx wrappers for for Akka `ActorEventBus`
    * `ISubject`
@@ -19,7 +23,7 @@ Functionality includes:
    * `IObserver`
 * Rx wrappers for Akka `EventBus`
    * These will require delegates to perform actual subscribe / unsubscribe / publish
-   * Might also create standard wrapper (with defauly delegate implementations) for well-known `EventBus` patterns (such as channel / sub-channel classifiers).
+   * Might also create standard wrapper (with default delegate implementations) for well-known `EventBus` patterns (such as channel / sub-channel classifiers).
 
 Example usage for actor-to-`ISubject`:
 

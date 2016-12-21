@@ -6,7 +6,7 @@ namespace Akka.Reactive.Messages
 	///		Message used to notify an Akka subscriber actor that an Rx sequence to which it is subscribed has encountered an error.
 	/// </summary>
 	public sealed class ReactiveSequenceError
-    {
+	{
 		/// <summary>
 		///		Create a new <see cref="ReactiveSequenceError"/>.
 		/// </summary>

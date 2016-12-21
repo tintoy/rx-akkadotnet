@@ -6,7 +6,7 @@ namespace Akka.Reactive
 	/// <summary>
 	///		The Rx-integration extension for Akka actor systems.
 	/// </summary>
-    public sealed class ReactiveApi
+	public sealed class ReactiveApi
 		: IExtension
 	{
 		/// <summary>

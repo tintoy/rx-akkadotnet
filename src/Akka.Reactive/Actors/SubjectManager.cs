@@ -12,7 +12,7 @@ namespace Akka.Reactive.Actors
 	/// <typeparam name="TMessage">
 	///		The base message type handled by the subject.
 	/// </typeparam>
-    sealed class SubjectManager<TMessage>
+	sealed class SubjectManager<TMessage>
 		: ReceiveActor
 	{
 		/// <summary>

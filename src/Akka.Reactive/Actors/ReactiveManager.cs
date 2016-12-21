@@ -9,7 +9,7 @@ namespace Akka.Reactive.Actors
 	/// <summary>
 	///		The actor that represents the top-level management API.
 	/// </summary>
-    sealed class ReactiveManager
+	sealed class ReactiveManager
 		: ReceiveActor
 	{
 		/// <summary>
@@ -92,13 +92,13 @@ namespace Akka.Reactive.Actors
 		}
 
 		/// <summary>
-        /// 	Create a <see cref="SubjectManager{TMessage}"/>.
-        /// </summary>
-        /// <param name="target">
+		/// 	Create a <see cref="SubjectManager{TMessage}"/>.
+		/// </summary>
+		/// <param name="target">
 		///		The target actor represented by the subject.
 		/// </param>
-        /// <param name="baseMessageType"></param>
-        /// <returns>
+		/// <param name="baseMessageType"></param>
+		/// <returns>
 		///		An <see cref="IActorRef" /> representing the subject manager.
 		/// </returns>
 		IActorRef CreateSubjectManager(CreateSubject createSubjectManager)
@@ -134,5 +134,5 @@ namespace Akka.Reactive.Actors
 
 			return Props.Create(subscriberManagerType, constructorParameters);
 		}
-    }
+	}
 }

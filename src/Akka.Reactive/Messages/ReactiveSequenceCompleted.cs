@@ -3,7 +3,7 @@
 	/// <summary>
 	///		Message used to notify an Akka subscriber actor that an Rx sequence to which it is subscribed has completed.
 	/// </summary>
-    public sealed class ReactiveSequenceCompleted
+	public sealed class ReactiveSequenceCompleted
 	{
 		/// <summary>
 		///		The singleton instance of the <see cref="ReactiveSequenceCompleted"/> message.
