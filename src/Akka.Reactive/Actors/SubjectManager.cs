@@ -36,23 +36,27 @@ namespace Akka.Reactive.Actors
 			if (target == null)
 				throw new ArgumentNullException(nameof(target));
 
-			// Route messages through this actor.
+			// Always use this actor as the message sender.
+			// It's important to capture sender here because we cannot guarantee which context the ISubject methods will be called from.
 			IActorRef self = Context.Self;
-			// TODO: Consider using target.ToSubject().
 			_input = Observer.Create<TMessage>(
-				onNext: message => target.Tell(message),
+				onNext: message => target.Tell(message, self),
 				onError: error => target.Tell(new ReactiveSequenceError(error)),
 				onCompleted: () =>
 				{
 					// Sequence complete; stop target.
-					target.Tell(PoisonPill.Instance);
+					target.Tell(PoisonPill.Instance, self);
 
 					Context.Stop(self);
 				}
 			);
 
-			Receive<TMessage>(message => _subject.OnNext(message));
-			Receive<Exception>(error => _subject.OnError(error));
+			Receive<TMessage>(
+				message => _subject.OnNext(message)
+			);
+			Receive<Exception>(
+				error => _subject.OnError(error)
+			);
 			Receive<GetSubjectInterfaces>(getSubjectInterfaces =>
 			{
 				Sender.Tell(new SubjectInterfaces<TMessage>(
